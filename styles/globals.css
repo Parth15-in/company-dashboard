@@ -1,0 +1,230 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+* {
+  box-sizing: border-box;
+}
+img, video, iframe {
+  max-width: 100%;
+  height: auto;
+}
+.mic-button {
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+  
+  .mic-button:hover {
+    transform: scale(1.1); /* Slightly increase size on hover */
+  }
+  
+  .mic-button:disabled {
+    opacity: 0.5; /* Make the button look disabled when it's inactive */
+  }
+
+  .sound-waves {
+    position: absolute;
+    top: -20px;  /* Adjust this value to place it above the mic */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: space-evenly;
+    width: 100px;
+  }
+  
+  .wave {
+    width: 10px;
+    height: 10px;
+    background-color: #ff4081; /* Pink color */
+    border-radius: 50%;
+    animation: waveAnimation 1s infinite ease-in-out;
+  }
+  
+  .wave:nth-child(2) {
+    animation-delay: 0.1s;
+  }
+  
+  .wave:nth-child(3) {
+    animation-delay: 0.2s;
+  }
+  
+  @keyframes waveAnimation {
+    0% {
+      height: 10px;
+      opacity: 0.7;
+    }
+    50% {
+      height: 20px;
+      opacity: 1;
+    }
+    100% {
+      height: 10px;
+      opacity: 0.7;
+    }
+  }
+  
+
+
+
+  .section-header {
+    /* margin-top: 20px; */
+    font-weight: bold;
+  }
+  
+  
+
+  .glow-text {
+    position: relative;
+    animation: glow 1.5s ease-in-out infinite;
+  }
+  
+  .glow-text::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background: rgba(255, 105, 180, 0.6); /* Glow effect color */
+    border-radius: 8px;
+    filter: blur(10px); /* Apply blur to the background glow */
+    animation: pulse 1.5s infinite ease-in-out;
+  }
+  
+  /* Animation for the text glow */
+  @keyframes glow {
+    0% {
+      text-shadow: 0 0 5px rgba(255, 105, 180, 0.7), 0 0 10px rgba(255, 105, 180, 0.5), 0 0 15px rgba(255, 105, 180, 0.3);
+    }
+    50% {
+      text-shadow: 0 0 20px rgba(255, 105, 180, 1), 0 0 30px rgba(255, 105, 180, 0.8), 0 0 40px rgba(255, 105, 180, 0.6);
+    }
+    100% {
+      text-shadow: 0 0 5px rgba(255, 105, 180, 0.7), 0 0 10px rgba(255, 105, 180, 0.5), 0 0 15px rgba(255, 105, 180, 0.3);
+    }
+  }
+  
+  /* Pulse animation for the background glow */
+  @keyframes pulse {
+    0% {
+      opacity: 0.3;
+    }
+    50% {
+      opacity: 0.8;
+    }
+    100% {
+      opacity: 0.3;
+    }
+  }
+  
+
+
+
+
+  .score-cards-container {
+    margin: 2px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    overflow-y: auto; /* Allow scrolling if content overflows */
+    max-height: 80vh; /* Limit height of the cards container */
+  }
+  
+  /* Add the following CSS for flip effect */
+  .card-container {
+    perspective: 1000px; /* Create a 3D space */
+    width: 250px; /* Set a fixed width for the cards */
+    height: 350px; /* Set a fixed height for the cards */
+  }
+  
+  .card {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s;
+    transform-style: preserve-3d; /* Maintain 3D transformations */
+    cursor: pointer;
+    position: relative;
+  }
+  
+  .card:hover {
+    transform: rotateY(180deg); /* Flip the card on hover */
+  }
+  
+  .card .front, .card .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Hide the back face when flipped */
+  }
+  
+  .card .back {
+    transform: rotateY(180deg); /* Flip the back face */
+  }
+  
+  /* Modal Background Styling */
+  .modal-background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 50;
+    overflow-y: auto; /* Allow scrolling for overflow */
+  }
+  
+  /* Modal Container */
+  .modal-container {
+    background-color: transparent;
+    border-radius: 8px;
+    padding: 16px;
+    max-width: 80%;
+    width: 80%;
+    max-height: 90vh;
+    overflow-y: auto; /* Enable scroll if content overflows */
+  }
+  
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .modal-header .back-button {
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  
+  .modal-header h1 {
+    font-size: 2rem;
+    text-align: center;
+    flex: 1;
+  }
+  
+  /* Button Styles */
+  .button {
+    padding: 12px 24px;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .button:hover {
+    background-color: #0056b3;
+  }
+  @keyframes scaleIn {
+  0% { transform: scale(0.9); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.15s ease-out;
+}

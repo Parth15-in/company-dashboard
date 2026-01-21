@@ -1,0 +1,211 @@
+.container {
+  min-height: 100vh;
+  padding: 1rem;
+  background: #f8f9fa;
+}
+
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #2c3e50;
+  text-align: center;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tab {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #e9ecef;
+  color: #495057;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tab:hover {
+  background-color: #dee2e6;
+}
+
+.tab.active {
+  background-color: #4a6cf7;
+  color: white;
+}
+
+.leaderboardContainer {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.leaderboardHeader {
+  display: flex;
+  padding: 1rem 1.5rem;
+  background-color: #f8f9fa;
+  font-weight: 600;
+  color: #6c757d;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.rankHeader, .rank {
+  width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.userHeader, .userInfo {
+  flex: 3;
+  display: flex;
+  align-items: center;
+}
+
+.scoreHeader, .score {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 1rem;
+}
+
+.leaderboardRow {
+  display: flex;
+  padding: 1rem 1.5rem;
+  align-items: center;
+  border-bottom: 1px solid #f1f3f5;
+  transition: background-color 0.2s ease;
+}
+
+.leaderboardRow:last-child {
+  border-bottom: none;
+}
+
+.leaderboardRow:hover {
+  background-color: #f8f9fa;
+}
+
+.leaderboardRow.currentUser {
+  background-color: #f0f4ff;
+  position: relative;
+}
+
+.leaderboardRow.currentUser::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: #4a6cf7;
+}
+
+.rankMedal {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #4a6cf7;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 1rem;
+}
+
+.avatarPlaceholder {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #4a6cf7;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  margin-right: 1rem;
+}
+
+.userDetails {
+  display: flex;
+  flex-direction: column;
+}
+
+.userName {
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 0.25rem;
+}
+
+.userEmail {
+  font-size: 0.85rem;
+  color: #6c757d;
+}
+
+.scoreValue {
+  font-weight: 700;
+  color: #2c3e50;
+  font-size: 1.1rem;
+}
+
+.scoreOutOf {
+  font-size: 0.85rem;
+  color: #6c757d;
+  margin-left: 0.25rem;
+  font-weight: normal;
+}
+
+.loading, .noData {
+  text-align: center;
+  padding: 2rem;
+  color: #6c757d;
+  font-size: 1.1rem;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .leaderboardHeader {
+    display: none; /* Hide header on mobile */
+  }
+  
+  .leaderboardRow {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+  
+  .rank, .score {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 0.5rem 0;
+  }
+  
+  .userInfo {
+    margin: 0.5rem 0;
+  }
+  
+  .tabs {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .tab {
+    width: 100%;
+    text-align: center;
+  }
+}
