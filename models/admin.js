@@ -5,7 +5,8 @@ const AdminSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true, lowercase: true, trim: true },
   passwordHash: { type: String, required: true },
   companyId: { type: mongoose.Schema.Types.ObjectId, ref: "Company", required: true },
-  role: { type: String, default: "admin" }, // future RBAC
+  role: { type: String, default: "admin" }, // Any role allowed - no restrictions
+  cultureInterviewCompleted: { type: Boolean, default: false }, // Track if employee completed culture interview
   createdAt: { type: Date, default: Date.now },
 });
 

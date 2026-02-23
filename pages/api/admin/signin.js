@@ -52,7 +52,7 @@ export default async function handler(req, res) {
     return res.status(200).json({
       ok: true,
       message: "Login successful",
-      admin: { id: admin._id, email: admin.email, name: admin.name, role: admin.role },
+      admin: { id: admin._id, email: admin.email, name: admin.name, role: admin.role ,  cultureInterviewCompleted: admin.cultureInterviewCompleted,},
       company: {
         id: company._id,
         onboardingCompleted: company.onboardingCompleted,

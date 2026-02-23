@@ -22,16 +22,33 @@ export default function Login() {
       });
 
       const data = await res.json();
-
-      if (data.ok) {
-        if (!data.company.onboardingCompleted) {
-          router.push("/admin/company/onboarding");
-        } else {
-          router.push("/admin");
-        }
-      } else {
-        alert(data.error || "Login failed");
+if (!data.ok) {
+        alert(data.message || "Login failed");
+        return;
       }
+
+      // ✅ localStorage set (required for culture interview)
+      localStorage.setItem("companyId", data.company.id);
+      localStorage.setItem("userId", data.admin.id);
+      localStorage.setItem("role", data.admin.role);
+
+      // ✅ Employee / HOD / Leader
+      if (data.admin.role !== "admin") {
+        if (data.admin.cultureInterviewCompleted) {
+          router.push("/admin"); // interview already done
+        } else {
+          router.push("employee/culture-interview"); // interview pending
+        }
+        return;
+      }
+
+      // ✅ Admin flow
+      if (!data.company.onboardingCompleted) {
+        router.push("/admin/signup");
+      } else {
+        router.push("/admin");
+      }
+
     } catch (err) {
       alert("Something went wrong. Please try again.");
     } finally {

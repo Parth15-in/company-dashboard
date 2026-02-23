@@ -298,11 +298,11 @@ const [employeeForm, setEmployeeForm] = useState({
                     onChange={(v) => handleEmployeeChange("email", v)}
                     error={errors.email}
                   />
-                  <Select
+                  
+                    <Input
                     label="Role *"
                     value={employeeForm.role}
                     onChange={(v) => handleEmployeeChange("role", v)}
-                    options={["HR", "HOD", "Leader"]}
                     error={errors.role}
                   />
                   <Input
